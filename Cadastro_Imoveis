@@ -1,0 +1,41 @@
+let imoveisCadastrados = []
+let opcao
+
+do {
+    opcao = Number(prompt("Bem vindo ao cadastro de Imóveis!\n" +
+                         "\nImóveis cadastrados: " + imoveisCadastrados.length +
+                         "\n1) Salvar um imóvel" +
+                         "\n2) Mostrar Imóveis cadastrados" +
+                         "\n3) Sair"))
+
+    switch(opcao) {
+        case 1:
+            let imovel = {}
+            imovel.proprietario = prompt("Informe o nome do proprietário: ")
+            imovel.qtddQuartos = Number(prompt("Informe a quantidade de quartos: "))
+            imovel.qtddBanheiros = Number(prompt("Informe a quantidade de banheiros: "))
+            imovel.confirmacao = confirm("O imóvel possui garagem? ")
+            
+            if(imovel.confirmacao) {
+                imovel.possuiGaragem = "Sim"
+            } else {
+                imovel.possuiGaragem = "Não"
+            }
+
+            imoveisCadastrados.push(imovel)
+        break
+        case 2:
+            imoveisCadastrados.forEach(function(imovel) {
+                return alert("Proprietário: " + imovel.proprietario +
+                      "\nQuantidade de quartos: " + imovel.qtddBanheiros +
+                      "\nQuantidade de banheiros: " + imovel.qtddBanheiros +
+                      "\nPossui garagem: " + imovel.possuiGaragem)
+            })
+        break
+        case 3:
+            alert("Saindo do programa...")
+        break
+        default:
+            alert("Informe uma opção válida!")
+    }
+} while (opcao !== 3)
